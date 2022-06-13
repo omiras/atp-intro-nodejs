@@ -1,0 +1,13 @@
+1. Crear pantalla de bienvenida
+2. Crear about us
+3. Pag estádisticas
+  3.1. Cuantos torneos se han jugado en 2021
+  3.2. Media de edad de los jugadores
+  3.2.1 Ordenar, de menor a mayor, los partidos más cortos y más largos
+  3.3 Lista de todos los enfrentamientos. En verde el ganador, en rojo el perdedor
+  3.4 BONUS: Usar https://plotly.com/javascript/ para generar un gráfico con las nacionalidades de todos los ganadores
+4. Formulario
+  3.1 Buscar todos los partidos que ha ganado un jugador en concreto (nombre del torneo)
+  3.2 Dar 3 opciones: selectbox/radio button, por tipo de pista. Mostrar todos las canchas con dicho tipo de pista
+  3.3 Usar un selector de rango para buscar los partidos que han tardado al menos un determinaodo número de minutos
+   

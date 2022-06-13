@@ -1,0 +1,3 @@
+- Nos han pedido crear una aplicación back end; para mostrar información sobre estadísticas de los partidos jugador en el año 2021
+en la ATP
+- La info nos la han proprocionado en un fichero JSON (que para mayor facilidad lo vamos a poner en un array de objetos) 
