@@ -1,6 +1,19 @@
 // Cargar JSON
 // Cómo cargar un fichero un fichero JSON: TODO
 
+// Vamos a cargar el fichero JSON y lo vamos a guardar en una variable que a ser un array de objetos
+
+// importar el módulo interno de NodeJS FileSystem; que nos permite manipular el sistema de ficheros
+const fs = require('fs');
+
+// quiero leer el fichero atp.json ubicado en esta misma carpeta que tiene por condifación utf-8
+const data = fs.readFileSync('atp.json', 'utf8');
+
+// JSON.parse va a convertir el string JSON en un array de objetos que podamos manejar
+const tournaments = JSON.parse(data);
+
+
+
 // MANDAMIENTO 1: Para los ejercicios de servdiro NodeJS NO USAMOS Live Server. NodeJS va a ser nuestro LiveServer.
 
 // Importar el módulo interno http. El módulo http nos va a permitir crear servidores
@@ -9,28 +22,30 @@ let http = require("http");
 // Crear un servidor que acepte cualquier petición del cliente y muestre un texto por el terminal random. La función que le pasemos por parámetro va a ser ejecutada CADA VEZ que el servidor reciba una petición HTTP
 
 let servidor = http.createServer((req, res) => {
-    // Hola hola! Vamos a responder con este mensaje al cliente
+  // Hola hola! Vamos a responder con este mensaje al cliente
 
-    // Nos piden crear una página about-us
-    // http://localhost:3000/about-us
+  // Nos piden crear una página about-us
+  // http://localhost:3000/about-us
 
-    console.log("petición url: ", req.url);
+  console.log("petición url: ", req.url);
 
-    // endpoint /about-us
-    if (req.url.includes("about-us")) {
-        // servir la página de about-us
-        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" })
-        res.write("<h1>Bienvenido a la página de ABOUT US</h1>");
-        res.write("<a href='/about-us'>About us</a>")
-        res.end();
-        console.log("Sigo haciendo cosas como procesar información y guardarla en un archivo");
-        return;
-    }
+  // endpoint /about-us
+  if (req.url.includes("about-us")) {
+    // servir la página de about-us
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" })
+    res.write("<h1 style='color:red'>Bienvenido a la página de ABOUT US</h1>");
+    res.write("<a href='/about-us'>About us</a>")
+    res.end();
+    console.log("Sigo haciendo cosas como procesar información y guardarla en un archivo");
+    return;
+  }
 
-    // endpoint /atp-form . Comprobamos si la ruta URL que ha introducido el usuario contiene la subcadena atp-form. En dicho caso, le devolvemos un formulario HTML completo (esto no lo haremos así en el futuro)
-    else if (req.url.includes("atp-form")) {
-        let formulario = `<!DOCTYPE html>
+  // endpoint /atp-form . Comprobamos si la ruta URL que ha introducido el usuario contiene la subcadena atp-form. En dicho caso, le devolvemos un formulario HTML completo (esto no lo haremos así en el futuro)
+  else if (req.url.includes("atp-form")) {
+    let formulario = `<!DOCTYPE html>
 <html>
+  <meta charset="UTF-8">
+
 <body>
 
 <h1>BUSCAR EN ATP</h1>
@@ -51,25 +66,25 @@ let servidor = http.createServer((req, res) => {
 </body>
 </html>
 `;
-        return res.end(formulario);
-    }
+    return res.end(formulario);
+  }
 
-    // endpoint /search
-    else if (req.url.includes("search")) {
-        // Vamos a enviar un JSON con los resultados de momento. (mañana)
+  // endpoint /search
+  else if (req.url.includes("search")) {
+    // Vamos a enviar un JSON con los resultados de momento. (mañana)
 
-        // Cómo obtengo el id del jugador por el cual queremos buscar los partidas ganador a partir de la varible req.url
-        let id = req.url.split("player=")[1];
-        return res.end("Quiero los partidos ganados por el jugador " + id);
+    // Cómo obtengo el id del jugador por el cual queremos buscar los partidas ganador a partir de la varible req.url
+    let id = req.url.split("player=")[1];
+    return res.end("Quiero los partidos ganados por el jugador " + id);
 
-    }
+  }
 
-    // endpoint 
+  // endpoint 
 
-    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" })
-    res.write("<h1>Bienvenido a la página de estadísticas de la ATP crada por the Mooners</h1>");
-    res.write("<a href='/about-us'>About us</a>")
-    res.end();
+  res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" })
+  res.write("<h1>Bienvenido a la página de estadísticas de la ATP crada por the Mooners</h1>");
+  res.write("<a href='/about-us'>About us</a>")
+  res.end();
 });
 
 // Queremos que nuestro servidor empiece a escuchar peticiones por el puerto 3000 (a partir del puerto 1024 tu puedes el que quieras).

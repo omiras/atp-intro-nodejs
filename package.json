@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omiras/atp-intro-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omiras/atp-intro-nodejs/issues"
+  },
+  "homepage": "https://github.com/omiras/atp-intro-nodejs#readme",
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
